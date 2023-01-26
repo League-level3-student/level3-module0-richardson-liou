@@ -21,7 +21,10 @@ public class _00_1D_Array_Methods {
     		int num = values[i];
     		result += num;
     	}
-    	int avg = result/values.length;
+    	System.out.println(values.length);
+    	System.out.println(result);
+    	float avg = result/(float)values.length;
+    	System.out.println(avg);
         return avg;
     }
 
@@ -46,9 +49,10 @@ public class _00_1D_Array_Methods {
     	for(int i = 0; i< arr.length; i++) {
     		int num = arr[i];
     		if(num == value) {
+    			System.out.println("this is here "+ value);
     		return i;
     		}
     	}
-        return 0;
+        return -1;
     }
 }

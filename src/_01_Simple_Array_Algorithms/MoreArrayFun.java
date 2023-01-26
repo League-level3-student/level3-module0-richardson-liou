@@ -32,7 +32,7 @@ public class MoreArrayFun {
 
     //4. Write a method that takes an array of Strings and prints every other String in the array.
 	 public static void printEveryOtherArray(String[] array) {
-	    	for(int i = ; i<array.length; i++) {
+	    	for(int i =0 ; i<array.length; i++) {
 	    		String word = array[i];
 	    		if(i %2 == 0) {
 	    			System.out.println(word);
@@ -48,7 +48,7 @@ public class MoreArrayFun {
 		 Random rand = new Random();
 		 
 	    	for(int i = array.length; i>0; i--) {
-	    		rand = rand.nextInt(array.length)
+	    		int rando = rand.nextInt(array.length);
 	    		String word = array[i];
 	    		
 	    	}
