@@ -35,8 +35,8 @@ public class Firework{
         //    to their original starting point.
     	for(int i = 0; i<sparks.length; i++) {
     		Spark s = sparks[i];
-    		s.x = FireworkDisplay.WIDTH;
-    		s.y=FireworkDisplay.HEIGHT;
+    		s.x = 100;
+    		s.y=100;
     	}
     }
 
@@ -76,7 +76,7 @@ public class Firework{
     	for(int i = 0; i<sparks.length; i++) {
     		Spark s = sparks[i];
     		g.setColor(s.color);
-    		g.drawOval(s.x, s.y, s.size, s.size);
+    		g.drawOval(s.x, s.y, 10, 10);
     	}
         // 6. Set the color to the spark's color with g.setColor()
         // 7. Fill in an oval using the spark's x, y, and size with g.fillOval()
