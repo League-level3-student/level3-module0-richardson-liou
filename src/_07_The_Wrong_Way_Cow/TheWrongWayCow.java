@@ -110,7 +110,7 @@ public class TheWrongWayCow {
 	
         }
         if(leftCow == 1) {
-	
+        	
         }
         }
         System.out.println(upCow);
