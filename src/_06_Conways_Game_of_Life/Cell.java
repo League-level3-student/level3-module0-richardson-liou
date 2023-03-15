@@ -45,7 +45,7 @@ public class Cell implements Drawable{
     	else if(numNeighbors >3) {
     		isAlive = false;
     	}
-    	if(isAlive = false && numNeighbors >3) {
+    	else if(isAlive = false && numNeighbors >3) {
     		isAlive = true;
     	}
     }

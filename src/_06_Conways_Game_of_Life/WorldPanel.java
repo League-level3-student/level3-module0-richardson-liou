@@ -28,7 +28,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
         this.cellsPerRow = cpr;
 
         // 2. Calculate the cell size.
-        cellSize = w*h;
+        cellSize = w/cpr;
         // 3a. Initialize the cell array to the appropriate size.
         cells = new Cell[cpr][cpr];
         // 3b. Iterate through the array and initialize each cell.
@@ -36,7 +36,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
         //    passing in the location.
         for(int i = 0; i<cells.length; i++) {
         	for(int j = 0; j<cells.length;j++) {
-        		cells[i][j] = new Cell(i*w,j*h, cellSize);
+        		cells[i][j] = new Cell(i*cellSize,j*cellSize, cellSize);
         	}
         }
 
@@ -44,20 +44,22 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 
     public void randomizeCells() {
         // 4. Iterate through each cell and randomly set each
-        //    cell's isAlive memeber to true or false
+        //    cell's isAlive member to true or false
     	Random rand = new Random();
-    	int num = rand.nextInt(2);
+    	
     	for(int i = 0; i<cells.length; i++) {
         	for(int j = 0; j<cells.length;j++) {
-        		if(num == 1) {
+        		int num = rand.nextInt(2);
+        		if(num == 0) {
         		cells[i][j].isAlive = true;
         	}
-        		else if(num ==2){
+        		else if(num ==1){
         			cells[i][j].isAlive = false;
         		}
         }
-        repaint();
+        
     }
+    	repaint();
     }
 
     public void clearCells() {
@@ -104,6 +106,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
         for(int i = 0; i<cells.length; i++) {
          	for(int j = 0; j<cells.length;j++) {
          		cells[i][j].liveOrDie(getLivingNeighbors(cells, i, j));
+         		livingNeighbors[i][j] = getLivingNeighbors(cells,i,j);
          	}
          }
         // 8. check if each cell should live or die
@@ -172,14 +175,15 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
         //    cellSize, meaning it's possible to click inside of a cell. You
         //    have to determine the cell that was clicked from the pixel
         //    location and toggle the 'isAlive' variable for that cell.
-    	
-    	 for(int i = 0; i<cells.length; i++) {
-           	for(int j = 0; j<cells.length;j++) {
-           		if( e.getX()== cells[i][j].getX() && e.getY()==cells[i][j].getY()) {
-           			cells[i][j].isAlive = true;
-           		}
-           	}
-           }
+    	int xpos = e.getX()/cellSize;
+   		int ypos = e.getY()/cellSize;
+   		if (cells[xpos][ypos].isAlive == false ) {
+   			cells[xpos][ypos].isAlive = true;
+   		}
+   		else if (cells[xpos][ypos].isAlive == true) {
+   			cells[xpos][ypos].isAlive = false;
+   		}
+   		
         repaint();
     }
 

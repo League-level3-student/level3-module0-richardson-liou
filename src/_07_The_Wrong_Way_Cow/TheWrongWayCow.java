@@ -53,7 +53,70 @@ public class TheWrongWayCow {
     public static int[] findWrongWayCow(final char[][] field) {
         // Fill in the code to return the [col, row] coordinate position of the
         // head (letter 'c') of the wrong way cow!
-        
+    	int upCow = 0;
+    	int downCow = 0;
+    	int rightCow = 0;
+    	int leftCow = 0;
+        for (int i = 0; i<field.length; i++) {
+        	for(int k = 0; k<field.length; k++) {
+        		//checks for cow down
+        		if (field[i][k] == 'c') {
+        			if(field[i+1][k]=='o') {
+        				System.out.println("found down o");
+        				if(field[i+2][k]=='w') {
+        					downCow +=1;
+        				}
+        			}
+        		}
+        		//upCow
+        		else if(field[i][k] =='w') {
+        			if (field[i+1][k]=='o') {
+        				System.out.println("found up o");
+        				if(field[i+2][k]=='c') {
+        					upCow +=1;
+        				}
+        			}
+        		}
+        		//rightCow
+        		else if(field[i][k] =='c') {
+        			if (field[i][k+1]=='o') {
+        				System.out.println("found right o");
+        			
+        				if(field[i][k+2]=='w') {
+        					rightCow +=1;
+        				}
+        				}
+        			
+        		}
+        		else if(field[i][k] =='w') {
+        			if (field[i][k+1]=='o') {
+        				System.out.println("found left o");
+        			
+        				if(field[i][k+2]=='c') {
+        					leftCow +=1;
+        				}
+        				}
+        			}
+        		
+
+        	}
+        if(upCow == 1) {
+        	
+        }
+        if(downCow == 1) {
+        	
+        }
+        if(rightCow == 1) {
+	
+        }
+        if(leftCow == 1) {
+	
+        }
+        }
+        System.out.println(upCow);
+        System.out.println(downCow);
+        System.out.println(rightCow);
+        System.out.println(leftCow);
         return null;
     }
 }
