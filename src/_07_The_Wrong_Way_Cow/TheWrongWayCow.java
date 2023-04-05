@@ -58,73 +58,85 @@ public class TheWrongWayCow {
     	int downCowNum = 0;
     	int rightCowNum = 0;
     	int leftCowNum = 0;
-    	int[][] upCow = new int [field.length][field[0].length];
-    	int[][] downCow= new int [field.length][field[0].length];
-    	int[][] rightCow= new int [field.length][field[0].length];
-    	int[][] leftCow= new int [field.length][field[0].length];
+    	int[] upCow = new int[] {0,0};
+    	int[]downCow  = new int[] {0,0};
+    	int[]rightCow = new int[] {0,0};
+    	int[]leftCow = new int[] {0,0};
         for (int i = 0; i<field.length; i++) {
         	for(int k = 0; k<field[0].length; k++) {
         		//checks for cow down
         		if (field[i][k] == 'c') {
-        			if(field[i+1][k]=='o') {
+        			if(i+1 < field.length&& field[i+1][k]=='o') {
         				
-        				if(field[i+2][k]=='w') {
+        				if(i+2<field.length &&field[i+2][k]=='w') {
         					System.out.println("found down cow");
-        					downCow[i][k]= {i,k};
+        					downCow = new int[]{k,i};
         					downCowNum +=1;
         				}
         			}
-        			else if (field[i][k+1]=='o') {
+        			//RIGHT
+        			else if (k+1 < field[0].length&&field[i][k+1]=='o') {
         				
-        			
-        				if(field[i][k+2]=='w') {
+        				if(k+2<field[0].length && field[i][k+2]=='w') {
         					System.out.println("found right cow");
-        					rightCow[i][k]= field[i][k];
+        					rightCow= new int[] {k,i};
         					rightCowNum +=1;
         				}
         				}
         		}
         		//upCow
         		if(field[i][k] =='w') {
-        			if (field[i+1][k]=='o') {
+        			if (i+1 <field.length && field[i+1][k]=='o') {
         				
-        				if(field[i+2][k]=='c') {
+        				if(i+2<field.length&& field[i+2][k]=='c') {
         					System.out.println("found up cow");
-        					upCow[i][k]= field[i][k];
+        					upCow= new int[] {k,i+2};
         					upCowNum +=1;
         				}
         			}
-        			else if (field[i][k+1]=='o') {
+        			//LEFT
+        			else if (k+1 <field[0].length && field[i][k+1]=='o') {
         				
         			
-        				if(field[i][k+2]=='c') {
+        				if(k+2 <field[0].length && field[i][k+2]=='c') {
         					System.out.println("found left cow");
-        					leftCow[i][k]= field[i][k];
+        					leftCow = new int[] {k+2,i};
         					leftCowNum +=1;
         				}
         				}
         		}
-        		//rightCow
+        		
 
         	}
         }
+        
+        System.out.println(upCowNum);
+        System.out.println(upCow[0] + "," + upCow[1]);
+        System.out.println(downCowNum);
+        System.out.println(downCow[0] +","+ downCow[1]);
+        System.out.println(rightCowNum);
+        System.out.println(rightCow[0]+","+rightCow[1]);
+        System.out.println(leftCowNum);
+        System.out.println(leftCow[0]+","+leftCow[1]);
         if(upCowNum == 1) {
-        	return upCow[0][0];
+        	
+        	return upCow;
         }
         else if(downCowNum == 1) {
-        	return downCow[0][0]; 
+        	
+        	return downCow; 
+        	
         }
         else if(rightCowNum == 1) {
+        	 
         	return rightCow;
         }
         else if(leftCowNum == 1) {
+        	
         	return leftCow;
         }
         
-        System.out.println(upCowNum);
-        System.out.println(downCowNum);
-        System.out.println(rightCowNum);
-        System.out.println(leftCowNum);
+       
         return null;
     }
 }
